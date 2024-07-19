@@ -7,8 +7,9 @@ import xml.etree.ElementTree as ET
 import streamlit as st
 
 def anthropic_response(csv_path, user_query, max_tokens: int = 4096):
-    client = Anthropic(api_key=st.secrets["api_key"])
+    print(csv_path)
     csv_data = csv_to_xml_string(csv_path)
+    client = Anthropic(api_key=st.secrets["api_key"])
     messages = [
         {
             "role": "user",

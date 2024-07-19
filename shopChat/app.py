@@ -1,7 +1,10 @@
+import os
+
 import streamlit as st
 import pandas as pd
 
 from chat import anthropic_response, parse_response
+from definitions import base_dir
 
 # Title of the app
 st.title('ShopChat')
@@ -16,7 +19,7 @@ user_input = st.text_input("What are you looking for?")
 # Processing user input (just echoing it back in this example)
 if user_input:
     response = anthropic_response(
-        'fake_clothing_store_dataset.csv',
+        os.path.join(base_dir, 'fake_clothing_store_dataset.csv'),
         user_input
     )
     parsed_response = parse_response(response[0].text)
